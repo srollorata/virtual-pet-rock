@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Pet Rock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Virtual Pet Rock</h1>
+        <p>Click on your pet rock to interact with it!</p>
+        
+        <div class="pet-container">
+            <div class="pet-rock" id="petRock">
+                <div class="rock-face">
+                    <div class="eyes">
+                        <div class="eye left-eye"></div>
+                        <div class="eye right-eye"></div>
+                    </div>
+                    <div class="mouth"></div>
+                </div>
+            </div>
+            
+            <div class="status-message" id="statusMessage">Your pet rock is waiting...</div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat">
+                <span class="stat-label">Happiness:</span>
+                <div class="stat-bar">
+                    <div class="stat-fill" id="happinessBar"></div>
+                </div>
+                <span class="stat-value" id="happinessValue">50</span>
+            </div>
+            
+            <div class="stat">
+                <span class="stat-label">Energy:</span>
+                <div class="stat-bar">
+                    <div class="stat-fill" id="energyBar"></div>
+                </div>
+                <span class="stat-value" id="energyValue">50</span>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button id="feedBtn">Feed Rock</button>
+            <button id="playBtn">Play</button>
+            <button id="restBtn">Rest</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

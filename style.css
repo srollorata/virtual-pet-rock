@@ -1,0 +1,282 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.container {
+    text-align: center;
+    max-width: 600px;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.pet-container {
+    position: relative;
+    margin: 40px 0;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pet-rock {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(145deg, #8B7355, #A0522D);
+    border-radius: 50% 40% 50% 40%;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+        inset -10px -10px 20px rgba(0,0,0,0.3),
+        inset 10px 10px 20px rgba(255,255,255,0.1),
+        0 10px 30px rgba(0,0,0,0.3);
+    animation: float 3s ease-in-out infinite;
+}
+
+.pet-rock:hover {
+    transform: scale(1.05);
+}
+
+.pet-rock:active {
+    transform: scale(0.95);
+}
+
+.rock-face {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 60px;
+}
+
+.eyes {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.eye {
+    width: 12px;
+    height: 12px;
+    background: #000;
+    border-radius: 50%;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.eye::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+}
+
+.mouth {
+    width: 20px;
+    height: 10px;
+    border: 2px solid #000;
+    border-top: none;
+    border-radius: 0 0 20px 20px;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+/* Rock States */
+.pet-rock.happy .eyes {
+    transform: scaleY(0.5);
+}
+
+.pet-rock.happy .mouth {
+    border-radius: 20px 20px 0 0;
+    border-top: 2px solid #000;
+    border-bottom: none;
+}
+
+.pet-rock.annoyed .eyes {
+    transform: scaleX(0.7) scaleY(1.2);
+}
+
+.pet-rock.annoyed .mouth {
+    width: 15px;
+    border-radius: 0 0 15px 15px;
+}
+
+.pet-rock.rolling {
+    animation: roll 0.5s ease-in-out;
+}
+
+.pet-rock.excited {
+    animation: bounce 0.6s ease-in-out;
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes roll {
+    0% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(-20px) rotate(-90deg); }
+    50% { transform: translateX(-40px) rotate(-180deg); }
+    75% { transform: translateX(-20px) rotate(-270deg); }
+    100% { transform: translateX(0) rotate(-360deg); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.2); }
+    50% { transform: scale(0.9); }
+    75% { transform: scale(1.1); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.status-message {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.7);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    min-width: 200px;
+    transition: all 0.3s ease;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 30px 0;
+    gap: 20px;
+}
+
+.stat {
+    flex: 1;
+    max-width: 200px;
+}
+
+.stat-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.stat-bar {
+    width: 100%;
+    height: 20px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.stat-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+    border-radius: 10px;
+    transition: width 0.5s ease;
+    width: 50%;
+}
+
+.stat-value {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+button {
+    padding: 12px 24px;
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 25px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+button:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .pet-rock {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .rock-face {
+        width: 70px;
+        height: 50px;
+    }
+    
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    button {
+        width: 200px;
+    }
+}
